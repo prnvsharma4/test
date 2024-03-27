@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KB Management</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+
+        .navbar2 {
+            padding: 10px 0;
+            text-align: center;
+            border-bottom: 3px solid #444; /* Darker fading line */
+        }
+        .navbar2 button {
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 0 10px;
+        }
+        .page-header {
+            text-align: center;
+            font-weight: 600;
+            margin: 20px 0;
+            font-size: 40px; /* Increased size */
+        }
+        .content {
+            display: none;
+            padding: 20px 0;
+        }
+        .active {
+            display: block;
+        }
+        .row.header {
+            font-weight: bold;
+            color: darkgrey; /* Dark grey color for headers */
+            font-size: larger;
+        }
+        .row:not(.header) {
+            color: grey; /* Grey color for content */
+        }
+        .row {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 10px 0;
+        }
+        .cell {
+            flex: 1;
+            text-align: center;
+        }
+        .cell img {
+            vertical-align: middle;
+            margin-right: 5px;
+            height: 1em; /* Adjust the size to match the text */
+        }
+        .status-button {
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            padding: 5px 10px;
+            outline: none;
+        }
+        .active-status, .inactive-status {
+            padding: 10px;
+            border-radius: 20px;
+            color: white;
+        }
+        .active-status {
+            background-color: green;
+        }
+        .inactive-status {
+            background-color: red;
+        }
+        
+        
+    </style>
+</head>
+<body>
+    
+<div class="settings-page" id="settingpage">      
+<div class="setting-box">
+<div class="navbar2">
+    <button onclick="showSection('kb')">KB Management</button>
+    <button onclick="showSection('settings')">User Management</button>
+</div>
+
+<div class="page-header">Control your complete database here</div>
+
+<div id="kb" class="content active">
+    <div class="row header">
+        <div class="cell">Source Type</div>
+        <div class="cell">Source Name</div>
+        <div class="cell">No. of Articles</div>
+        <div class="cell">Status</div>
+        <div class="cell">Last Updated</div>
+    </div>
+    <div class="row">
+        <div class="cell">API</div>
+        <div class="cell"><img src="https://raw.githubusercontent.com/prnvsharma4/test/main/servicenow_logo_icon_168835.png" alt="ServiceNow Icon"> Service Now</div>
+        <div class="cell">100</div>
+        <div class="cell">
+            <button class="status-button active-status" onclick="toggleStatus(this)">
+                Active
+            </button>
+        </div>
+        <div class="cell">2023-01-01</div>
+    </div>
+</div>
+</div>
+<div id="settings" class="content">
+    <h1>Settings</h1>
+    <p>Content for Settings...</p>
+</div> 
+</div> 
+    
+    
+<script>
+    function showSection(sectionId) {
+        document.querySelectorAll('.content').forEach((section) => {
+            section.style.display = 'none';
+        });
+        document.getElementById(sectionId).style.display = 'block';
+    }
+
+    function toggleStatus(button) {
+        const isActive = button.classList.contains('active-status');
+        if (isActive) {
+            button.classList.remove('active-status');
+            button.classList.add('inactive-status');
+            button.textContent = 'Not Active';
+            button.style.backgroundColor = 'red';
+        } else {
+            button.classList.remove('inactive-status');
+            button.classList.add('active-status');
+            button.textContent = 'Active';
+            button.style.backgroundColor = 'green';
+        }
+    }
+        
+</script>
+</body>
+</html>
